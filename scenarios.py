@@ -56,7 +56,7 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
                 fontsize=9)
     
     predData = pd.read_csv("predictions.csv", low_memory=False)
-    historyData = pd.read_csv("merged_clean_7years.csv", low_memory=False)
+    historyData = pd.read_csv("demo_data.csv", low_memory=False)
     
     predData.columns = predData.columns.str.strip()
     historyData.columns = historyData.columns.str.strip()
