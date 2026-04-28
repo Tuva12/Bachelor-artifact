@@ -35,8 +35,8 @@ This demo focuses on Scenario 3:
 * predictions.csv
 Contains predicted service times from the TFT model
 
-* merged_clean_7years.csv
-Contains historical logistics data:
+* demo_data.csv
+Contains historical logistics data for selected dates:
   * customer IDs
   * vehicle IDs
   * delivery volume
