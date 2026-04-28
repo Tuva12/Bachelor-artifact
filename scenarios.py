@@ -16,7 +16,7 @@ def get_demo_dates_s3():
 
 
 def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
-    # Copy paste the scenario 3 code here, that is identical to the scenario 3 notebook.
+    # Copy pasted the scenario 3 code here, that is identical to the scenario 3 notebook.
     
     fromHour = 8
     toHour = 15
@@ -189,7 +189,6 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
     
     travelIndex = routing.RegisterTransitCallback(travelCallback)
     routing.SetArcCostEvaluatorOfAllVehicles(travelIndex)
-    
     volumeIndex = routing.RegisterUnaryTransitCallback(volumeCallback)
     
     routing.AddDimensionWithVehicleCapacity(
@@ -198,7 +197,7 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
         [int(capacity * 1000)] * vehicleCount,
         True,
         "Capacity")
-    
+
     timeIndex = routing.RegisterTransitCallback(timeCallback)
     
     routing.AddDimension(
