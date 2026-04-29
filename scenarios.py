@@ -23,7 +23,6 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
     capacity = 42
     endOfDay = 24 * 60
     solveTime = 10
-    
     customerColumn = "Kundenr"
     dateColumn = "Dato"
     shiftColumn = "Kjøreskift ID"
@@ -57,15 +56,12 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
     
     predData = pd.read_csv("predictions.csv", low_memory=False)
     historyData = pd.read_csv("demo_data.csv", low_memory=False)
-    
     predData.columns = predData.columns.str.strip()
     historyData.columns = historyData.columns.str.strip()
-    
     predData[dateColumn] = pd.to_datetime(predData[dateColumn], errors="coerce")
     historyData[dateColumn] = pd.to_datetime(historyData[dateColumn], errors="coerce")
     historyData[startWindow] = pd.to_datetime(historyData[startWindow], errors="coerce")
     historyData[endWindow] = pd.to_datetime(historyData[endWindow], errors="coerce")
-    
     predData["mergeDate"] = predData[dateColumn].dt.date
     historyData["mergeDate"] = historyData[dateColumn].dt.date
     
@@ -75,8 +71,7 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
         shiftColumn,
         volumeColumn,
         startWindow,
-        endWindow
-    ]].copy()
+        endWindow]].copy()
     
     data = predData.merge(historySmall, on=[customerColumn, "mergeDate"], how="left")
     data = data.rename(columns={volumeColumn: "volume"})
@@ -173,18 +168,15 @@ def run_scenario_3(chosenDate, vehiclesToRemove, topVehicleCount):
     def travelCallback(startIndex, endIndex):
         startStop = manager.IndexToNode(startIndex)
         endStop = manager.IndexToNode(endIndex)
-    
         return travelTime[startStop][endStop]
     
     def volumeCallback(startIndex):
         stopNumber = manager.IndexToNode(startIndex)
-    
         return int(volumeList[stopNumber] * 1000)
     
     def timeCallback(startIndex, endIndex):
         startStop = manager.IndexToNode(startIndex)
         endStop = manager.IndexToNode(endIndex)
-    
         return travelTime[startStop][endStop] + serviceList[startStop]
     
     travelIndex = routing.RegisterTransitCallback(travelCallback)
